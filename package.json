@@ -1,7 +1,7 @@
 {
   "name": "noter",
   "version": "1.2.0",
-  "description": "一个类似 Flomo 的快速笔记插件，支持标签管理",
+  "description": "A Flomo-style quick note plugin for capturing ideas instantly with tag management.",
   "main": "dist/main.js",
   "scripts": {
     "dev": "vite build --watch",
@@ -16,7 +16,7 @@
     "flomo",
     "quick-note"
   ],
-  "author": "",
+  "author": "limaosheng",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.0",

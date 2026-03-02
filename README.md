@@ -1,228 +1,215 @@
-# Noter - Obsidian 插件
+# Noter - Obsidian Plugin
 
-一个类似 Flomo 的快速笔记插件，集成在 Obsidian 侧边栏，提供流畅的卡片笔记体验。
+A Flomo-style quick note plugin integrated in Obsidian sidebar, providing a smooth card-based note-taking experience.
 
-## ✨ 功能特性
+## Features
 
-- 🚀 **快速记录**：类似 Flomo 的简洁输入框，支持快速记录想法
-- 🏷️ **标签管理**：自动识别 `#标签`，支持标签筛选和标签云
-- 📅 **回顾功能**：支持今日往昔、随机漫步等回顾模式
-- 💾 **本地存储**：笔记以 Markdown 格式存储在本地，完全掌控数据
-- 🎨 **美观界面**：卡片式设计，支持 Obsidian 主题
-- 🔍 **快速搜索**：支持按内容或标签搜索笔记
+- **Quick Notes**: Simple and clean input box for capturing ideas instantly
+- **Tag Management**: Auto-detect `#tags`, support tag filtering and tag cloud
+- **Review Mode**: Look back at past notes from specific dates or random walks
+- **Local Storage**: Notes stored as local Markdown files, you own your data
+- **Beautiful UI**: Card-based design, supports Obsidian themes
+- **Search**: Search notes by content or tags
 
-## 📦 安装方法
+## Installation
 
-### 方法一：手动安装（推荐）
+### Option 1: Manual Installation (Recommended)
 
-1. 下载插件文件
-   - 从 GitHub Releases 下载最新版本的 `main.js`、`manifest.json` 和 `styles.css`
+1. Download plugin files
+   - Download `main.js`, `manifest.json`, and `styles.css` from GitHub Releases
 
-2. 创建插件目录
-   - 在你的 Obsidian Vault 中找到 `.obsidian/plugins/` 目录
-   - 创建新文件夹 `noter`
+2. Create plugin directory
+   - Find `.obsidian/plugins/` in your Obsidian Vault
+   - Create a new folder named `noter`
 
-3. 复制文件
-   - 将 `main.js`、`manifest.json` 和 `styles.css` 复制到 `noter` 文件夹
+3. Copy files
+   - Copy `main.js`, `manifest.json`, and `styles.css` to the `noter` folder
 
-4. 启用插件
-   - 打开 Obsidian
-   - 进入 设置 → 第三方插件
-   - 关闭"安全模式"（如果首次使用第三方插件）
-   - 在"已安装的插件"中找到 "Noter"
-   - 点击开关启用插件
+4. Enable plugin
+   - Open Obsidian
+   - Go to Settings → Community plugins
+   - Turn off "Restricted mode" (if using community plugins for the first time)
+   - Find "Noter" in "Installed plugins"
+   - Toggle to enable the plugin
 
-### 方法二：开发环境安装
+### Option 2: Development Installation
 
 ```bash
-# 克隆项目
+# Clone the repository
 git clone <repository-url>
 cd noter
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 构建项目
+# Build the plugin
 npm run build
 
-# 复制 dist 目录到 Obsidian 插件目录
+# Copy dist folder to Obsidian plugins directory
 cp -r dist/* /path/to/your/vault/.obsidian/plugins/noter/
 ```
 
-## 🚀 使用方法
+## Usage
 
-### 打开 Noter
+### Opening Noter
 
-1. **点击侧边栏图标**：点击 Obsidian 右侧边栏的铅笔图标 📝
-2. **使用命令面板**：
-   - 按下 `Cmd/Ctrl + P`
-   - 输入 "Noter"
-   - 选择 "打开 Noter"
+1. **Click sidebar icon**: Click the pencil icon in Obsidian's right sidebar
+2. **Use Command Palette**:
+   - Press `Cmd/Ctrl + P`
+   - Type "Noter"
+   - Select "Open Noter"
 
-### 创建笔记
+### Creating Notes
 
-1. 在顶部的输入框中输入内容
-2. 使用 `#标签` 语法添加标签（例如：`#灵感 #工作`）
-3. 按下 `Ctrl/Cmd + Enter` 或点击"发送"按钮
-4. 笔记会自动保存到配置的文件夹
+1. Type your content in the input box at the top
+2. Add tags using `#tag` syntax (e.g., `#ideas #work`)
+3. Press `Ctrl/Cmd + Enter` or click the send button
+4. Notes are automatically saved to the configured folder
 
-### 标签管理
+### Tag Management
 
-- **查看所有标签**：输入框下方显示所有标签
-- **筛选笔记**：点击标签云中的标签，只显示包含该标签的笔记
-- **取消筛选**：再次点击已选中的标签或点击"#全部"
+- **View all tags**: All tags displayed below the input box
+- **Filter notes**: Click a tag in the tag cloud to show only notes with that tag
+- **Clear filter**: Click the selected tag again or click "#All"
 
-### 搜索笔记
+### Review Features
 
-- 在搜索栏中输入关键词
-- 实时搜索笔记内容和标签
-- 点击清除按钮清空搜索
+1. Click the review button in the top right corner
+2. Choose review mode:
+   - **On This Day**: View notes from the same date in previous years
+   - **Random Walk**: Randomly display 10 old notes
+3. Use "Previous"/"Next" to navigate through notes
 
-### 回顾功能
+### Note Operations
 
-1. 点击右上角的 📅 回顾按钮
-2. 选择回顾模式：
-   - **今日往昔**：查看往年的今天记录的笔记
-   - **随机漫步**：随机展示 10 条旧笔记
-3. 使用"上一条"/"下一条"浏览笔记
+- **Expand/Collapse**: Click note card to view full content
+- **Edit**: Click edit button to open in Obsidian editor
+- **Delete**: Click delete button to remove note
+- **Link**: Create connections between notes
 
-### 笔记操作
+## Settings
 
-- **展开/收起**：点击笔记卡片查看完整内容
-- **编辑**：点击编辑按钮在 Obsidian 编辑器中打开
-- **删除**：点击删除按钮删除笔记
-- **链接**：创建笔记之间的关联
+Go to Settings → Noter to configure:
 
-## ⚙️ 设置
+- **Notes Folder**: Folder path for storing notes (default: `Noter/Notes`)
+- **Review Feature**: Enable/disable review button (default: Enabled)
+- **Date Format**: Date format for note IDs (default: `YYYY-MM-DD-HHmmss`)
+- **Send Key Mode**: Choose shortcut key for sending notes (Enter or Ctrl/Cmd+Enter)
 
-进入 设置 → Noter，可以配置：
+## Storage Format
 
-- **笔记文件夹**：笔记存储的文件夹路径（默认：`Noter/Notes`）
-- **启用回顾功能**：是否显示回顾按钮（默认：启用）
-- **日期格式**：笔记 ID 的日期格式（默认：`YYYY-MM-DD-HHmmss`）
-
-## 📁 笔记存储格式
-
-笔记按日期分组存储，格式为 `YYYY/MM/YYYYMMDD.md`：
+Notes are stored by date in `YYYY/MM/YYYYMMDD.md` format:
 
 ```
 Vault/Noter/Notes/
 └── 2026/
     └── 03/
-        └── 20260301.md  # 包含 3 月 1 日的所有笔记
+        └── 20260301.md  # All notes from March 1st
 ```
 
-### 文件内容格式
+### File Content Format
 
 ```markdown
-[20260301120000] {灵感，产品} [2026-03-01T12:00:00.000Z] 今天想到一个很好的产品创意
+[20260301120000] {ideas,product} [2026-03-01T12:00:00.000Z] Had a great product idea today
 
 ---
-[20260301143000] {工作，会议} [2026-03-01T14:30:00.000Z] 下午的项目会议定在周三
+[20260301143000] {work,meeting} [2026-03-01T14:30:00.000Z] Project meeting scheduled for Wednesday
 
 ---
-[20260301180000] {读书，成长} [2026-03-01T18:00:00.000Z] 读《深度工作》有感...
+[20260301180000] {reading,growth} [2026-03-01T18:00:00.000Z] Thoughts on "Deep Work"...
 ```
 
-**格式说明**：
-- `[ID]` - 14 位数字唯一标识符
-- `{标签}` - 逗号分隔的标签列表
-- `[时间]` - ISO 8601 格式的创建时间
-- `内容` - 笔记正文，支持 Markdown
+**Format Explanation**:
+- `[ID]` - 14-digit unique identifier
+- `{tags}` - Comma-separated tag list
+- `[timestamp]` - ISO 8601 formatted creation time
+- `content` - Note body, supports Markdown
 
-详见：[存储格式说明](STORAGE_FORMAT.md)
+See: [Storage Format Details](STORAGE_FORMAT.md)
 
-## 🛠️ 开发
+## Development
 
-### 环境要求
+### Requirements
 
 - Node.js >= 18
 - npm >= 9
 
-### 开发命令
+### Commands
 
 ```bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 开发模式（监听文件变化）
+# Development mode (watch for changes)
 npm run dev
 
-# 构建生产版本
+# Build production version
 npm run build
 
-# 类型检查
+# Type checking
 npm run typecheck
 
-# 清理构建文件
+# Clean build files
 npm run clean
 ```
 
-### 项目结构
+### Project Structure
 
 ```
 noter/
 ├── src/
-│   ├── main.ts              # 插件入口
-│   ├── FlomoView.tsx        # 主视图组件
-│   ├── styles.css           # 样式文件
-│   ├── components/          # UI 组件
-│   │   ├── NoteInput.tsx
-│   │   ├── NoteCard.tsx
-│   │   ├── NoteList.tsx
-│   │   ├── TagCloud.tsx
-│   │   ├── ReviewModal.tsx
-│   │   └── SearchBar.tsx
-│   ├── services/            # 业务逻辑
+│   ├── main.ts              # Plugin entry point
+│   ├── FlomoView.ts         # Main view component
+│   ├── styles.css           # Stylesheet
+│   ├── services/            # Business logic
 │   │   ├── NoteService.ts
-│   │   ├── TagService.ts
-│   │   └── ReviewService.ts
-│   └── types/               # 类型定义
+│   │   └── TagService.ts
+│   └── types/               # Type definitions
 │       └── index.ts
-├── dist/                    # 构建输出目录
-├── manifest.json            # 插件清单
+├── dist/                    # Build output
+├── manifest.json            # Plugin manifest
 ├── package.json
 └── README.md
 ```
 
-## 🎯 使用技巧
+## Tips
 
-### 快捷键
+### Keyboard Shortcuts
 
-- `Ctrl/Cmd + Enter`：快速发送笔记
-- `Ctrl/Cmd + P` → "Noter"：打开 Noter 面板
+- `Ctrl/Cmd + Enter`: Quick send note
+- `Ctrl/Cmd + P` → "Noter": Open Noter panel
 
-### 标签最佳实践
+### Tag Best Practices
 
-1. **保持简洁**：使用简短的标签名（如 `#工作` 而不是 `#工作相关`）
-2. **层级标签**：可以使用 `/` 创建层级（如 `#项目/Noter`）
-3. **一致性**：尽量使用统一的标签命名
+1. **Keep it simple**: Use short tag names (e.g., `#work` instead of `#work-related`)
+2. **Hierarchical tags**: Use `/` for hierarchy (e.g., `#project/Noter`)
+3. **Consistency**: Maintain consistent tag naming
 
-### 数据备份
+### Data Backup
 
-由于笔记存储在本地 Markdown 文件中，你可以：
+Since notes are stored as local Markdown files, you can:
 
-- 使用 Obsidian Sync 同步
-- 使用 Git 进行版本控制
-- 使用 iCloud、Dropbox 等云盘同步
+- Use Obsidian Sync
+- Use Git for version control
+- Use iCloud, Dropbox, or other cloud storage
 
-## 🐛 问题反馈
+## Troubleshooting
 
-如果遇到问题或有建议，请：
+If you encounter issues:
 
-1. 检查是否已启用最新的 Obsidian 版本
-2. 尝试禁用其他插件排查冲突
-3. 查看控制台错误信息（`Ctrl/Cmd + Shift + I`）
+1. Ensure you're using the latest version of Obsidian
+2. Try disabling other plugins to check for conflicts
+3. Check console for error messages (`Ctrl/Cmd + Shift + I`)
 
-## 📄 许可证
+## License
 
 MIT License
 
-## 🙏 致谢
+## Acknowledgments
 
-- 灵感来自 [Flomo](https://flomoapp.com/)
-- 基于 [Obsidian](https://obsidian.md/) 开发
+- Inspired by [Flomo](https://flomoapp.com/)
+- Built on [Obsidian](https://obsidian.md/)
 
 ---
 
-**享受快速笔记的乐趣！** 📝✨
+**Enjoy quick note-taking!** 📝

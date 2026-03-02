@@ -3,8 +3,8 @@
   "name": "Noter",
   "version": "1.2.0",
   "minAppVersion": "0.15.0",
-  "description": "一个类似 Flomo 的快速笔记插件，支持标签管理和笔记点击打开",
-  "author": "Noter Team",
-  "authorUrl": "",
+  "description": "A Flomo-style quick note plugin for capturing ideas instantly with tag management.",
+  "author": "limaosheng",
+  "authorUrl": "https://github.com/limaosheng",
   "isDesktopOnly": false
 }

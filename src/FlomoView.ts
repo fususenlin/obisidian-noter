@@ -15,7 +15,6 @@ export class NoterView extends ItemView {
   public settings: NoterSettings;
 
   private notes: Note[] = [];
-  private tags: TagInfo[] = [];
   private filteredNotes: Note[] = [];
   private selectedTag: string | null = null;
   private isLoading = true;
@@ -146,9 +145,9 @@ export class NoterView extends ItemView {
     // textarea
     this.textarea = inputWrapper.createEl('textarea', {
       cls: 'noter-textarea',
-      placeholder: '现在的想法是……',
       attr: {
-        rows: '3'
+        rows: '3',
+        placeholder: '现在的想法是……'
       }
     });
 
@@ -164,6 +163,7 @@ export class NoterView extends ItemView {
       text: '#'
     });
     hashBtn.title = '插入标签';
+    hashBtn.style.color = '#999999';
     hashBtn.onclick = () => {
       if (this.textarea) {
         this.insertAtCursor('#');
@@ -176,6 +176,7 @@ export class NoterView extends ItemView {
       text: '@'
     });
     atBtn.title = '提及';
+    atBtn.style.color = '#999999';
     atBtn.onclick = () => {
       if (this.textarea) {
         this.insertAtCursor('@');
