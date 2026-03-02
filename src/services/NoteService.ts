@@ -167,11 +167,8 @@ export class NoteService {
       existingContent = await this.app.vault.read(file);
     }
 
-    // 格式化内容：将标签添加到正文中
+    // 格式化内容：标签已经在内容中，不需要重复添加
     let formattedContent = content;
-    if (tags.length > 0) {
-      formattedContent = `${content} ${tags.map(tag => `#${tag}`).join(' ')}`;
-    }
 
     // 添加新笔记块
     const newBlock = this.formatNoteBlock(createdAt, formattedContent);

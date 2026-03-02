@@ -62,9 +62,6 @@ export class NoterView extends ItemView {
     // 创建输入框
     this.renderInput();
 
-    // 创建标签云（底部）
-    this.renderTagCloud();
-
     // 创建内容区域（可滚动）
     this.renderContent();
 
@@ -126,16 +123,13 @@ export class NoterView extends ItemView {
 
     const header = this.containerDiv.createDiv('noter-header');
     const titleDiv = header.createDiv('noter-title');
-    titleDiv.createEl('h2', { text: '📝 Noter' });
-    this.timeSpan = titleDiv.createSpan('noter-time', this.currentTime);
-
-    const actions = header.createDiv('noter-actions');
-    const refreshBtn = actions.createEl('button', {
-      cls: 'noter-btn noter-btn-icon',
-      text: '🔄'
+    titleDiv.createEl('h2', { text: 'Noter' });
+    this.timeSpan = titleDiv.createSpan({
+      cls: 'noter-time',
+      text: this.currentTime
     });
-    refreshBtn.title = '刷新';
-    refreshBtn.onclick = () => this.loadNotes();
+
+
   }
 
   /**
@@ -152,7 +146,7 @@ export class NoterView extends ItemView {
     // textarea
     this.textarea = inputWrapper.createEl('textarea', {
       cls: 'noter-textarea',
-      placeholder: '记录你的想法... 使用 #标签 来分类',
+      placeholder: '现在的想法是……',
       attr: {
         rows: '3'
       }
@@ -173,18 +167,6 @@ export class NoterView extends ItemView {
     hashBtn.onclick = () => {
       if (this.textarea) {
         this.insertAtCursor('#');
-      }
-    };
-
-    // 图片按钮
-    const imageBtn = toolLeft.createEl('button', {
-      cls: 'noter-toolbar-btn',
-      text: '🖼️'
-    });
-    imageBtn.title = '插入图片';
-    imageBtn.onclick = () => {
-      if (this.textarea) {
-        this.insertAtCursor('![](图片链接) ');
       }
     };
 
@@ -298,55 +280,6 @@ export class NoterView extends ItemView {
   }
 
   /**
-   * 渲染标签云（底部）
-   */
-  private renderTagCloud(): void {
-    if (!this.containerDiv) return;
-
-    const tagCloud = this.containerDiv.createDiv('noter-tag-cloud-bottom');
-    this.updateTagCloud(tagCloud);
-  }
-
-  /**
-   * 更新标签云
-   */
-  private updateTagCloud(tagCloud: HTMLElement): void {
-    tagCloud.empty();
-
-    // 添加"全部"选项
-    const allBtn = tagCloud.createEl('button', {
-      cls: `noter-tag-pill ${this.selectedTag === null ? 'active' : ''}`,
-      text: '全部'
-    });
-    allBtn.onclick = () => {
-      this.selectedTag = null;
-      this.applyFilters();
-      this.renderTagCloud();
-    };
-
-    if (this.tags.length === 0) return;
-
-    this.tags.forEach(tagInfo => {
-      const btn = tagCloud.createEl('button', {
-        cls: `noter-tag-pill ${this.selectedTag === tagInfo.name ? 'active' : ''}`,
-        text: `#${tagInfo.name}`
-      });
-
-      btn.createSpan({
-        cls: 'noter-tag-count',
-        text: `(${tagInfo.count})`
-      });
-
-      btn.onclick = () => {
-        this.selectedTag = this.selectedTag === tagInfo.name ? null : tagInfo.name;
-        this.applyFilters();
-        // 更新标签云显示
-        this.renderTagCloud();
-      };
-    });
-  }
-
-  /**
    * 渲染内容区域（可滚动）
    */
   private renderContent(): void {
@@ -439,26 +372,8 @@ export class NoterView extends ItemView {
       const previewDiv = content.createDiv('noter-card-preview');
       previewDiv.innerText = preview;
 
-      // 元信息
-      const meta = card.createDiv('noter-card-meta');
-
-      // 标签
-      const tagsDiv = meta.createDiv('noter-card-tags');
-      note.metadata.tags.slice(0, 5).forEach(tag => {
-        const tagPill = tagsDiv.createSpan({
-          cls: 'noter-tag-pill',
-          text: `#${tag}`
-        });
-        tagPill.onclick = (e: MouseEvent) => {
-          e.stopPropagation();
-          this.selectedTag = tag;
-          this.applyFilters();
-          this.renderTagCloud();
-        };
-      });
-
-      // 时间
-      meta.createSpan({
+      // 时间 - 左下角
+      card.createSpan({
         cls: 'noter-card-time',
         text: this.formatTime(note.metadata.created)
       });
